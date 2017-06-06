@@ -1,0 +1,32 @@
+<div *ngIf="selectGoods?.length > 0" class="selelct-goods">
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons end class="btn-edit">
+      <button ion-button color="royal" outline (click)="delOrder()" [class.select-edit]="unshow">删除</button>
+    </ion-buttons>
+    <ion-buttons end [class.btn-finsh]="!btnEdit">
+      <button ion-button color="royal" outline (click)="edit()">{{editOrFinsh}}</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-list>
+    <ion-list-header>
+    </ion-list-header>
+     <ion-item *ngFor="let cart of selectGoods">
+        <ion-label>
+            <ion-row>
+                <ion-col col-1 [class.select-edit]="unshow">
+                    <ion-checkbox  class="select-edit2" id="{{cart.orderId}}" name="editOrder"></ion-checkbox>
+                </ion-col>
+                <ion-col col-1>
+                    <ion-avatar><img src="{{cart.getGoods().imgsrc}}"> </ion-avatar>
+                </ion-col>
+                <ion-col col-3>　￥{{cart.getGoods().price}}</ion-col>
+                <ion-col col-3>{{cart.getGoods().type}}</ion-col>
+                <ion-col col-3>{{cart.getBuyNumer()}}件 ￥{{cart.getAllPrice()}} </ion-col>
+            </ion-row>
+        </ion-label>
+    </ion-item>
+</ion-list>
+</div>

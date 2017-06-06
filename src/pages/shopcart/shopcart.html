@@ -1,0 +1,69 @@
+<ion-content>
+    <ion-card *ngIf="selectGoods?.length == 0">
+     <ion-card-content class="no-goods" >
+        <ion-card-title>
+           <ion-icon name="alert" item-center class="alert"></ion-icon>
+        </ion-card-title>
+      <p>您的购物车内还没有商品！</p>
+      <ion-row no-padding>
+          <ion-col>
+            <button ion-button outline small color="dark" icon-left>
+              <ion-icon name='person'></ion-icon>
+              个人中心
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button outline small color="dark" icon-left>
+              <ion-icon name='cafe'></ion-icon>
+              随便逛逛
+            </button>
+          </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  
+  <app-goodsincart
+    [selectGoods]="selectGoods"
+  ></app-goodsincart>
+
+  <ion-grid no-padding>
+    <ion-row no-padding class="divid-line">
+       <ion-col col-12 >
+         <h6><span>你可能还想要</span></h6>
+       </ion-col>
+    </ion-row>
+    <ion-row no-padding>
+      <ion-col col-6  *ngFor="let good of allGoods">
+        <ion-card class="card2">
+          <img src="{{good.imgsrc}}"/>
+          <ion-card-content>
+            <p>{{good.desc}}</p>
+          </ion-card-content>
+          <ion-row no-padding class="card-price">
+            <ion-col text-left>
+              <p>￥{{good.price}}</p>
+            </ion-col>
+            <ion-col text-right>
+               <app-makesure 
+                  [goods]="good"
+                  (newInCart)="newInCart($event)"
+               ></app-makesure>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar *ngIf="selectGoods?.length > 0">
+    <p>
+      <span>￥</span><span>{{calcTotalPay()}}</span>
+    </p>
+    <ion-buttons end class="btn-edit">
+      <button ion-button color="danger" outline (click)="checkout()">去结算</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

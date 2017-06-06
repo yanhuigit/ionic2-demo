@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+        <p><ion-icon name="ios-chatbubbles-outline"></ion-icon> 妹子，请入手</p>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="goods">
+    <ion-item>
+        <ion-avatar>
+            <img src="{{goods.imgsrc}}">
+        </ion-avatar>
+        <h6>{{goods.desc}}</h6>
+        <p>￥{{goods.price}}</p>
+    </ion-item>
+    <ion-item class="goods-model">
+        <ion-label>选择款式</ion-label>
+        <ion-select multiple="false" cancelText="NO" okText="OKAY"  [(ngModel)]="goodsType">
+            <ion-option value="bacon">Bacon</ion-option>
+            <ion-option value="pepperoni">Pepperoni</ion-option>
+            <ion-option value="xcheese" >Extra Cheese</ion-option>
+            <ion-option value="peppers">Green Peppers</ion-option>
+            <ion-option value="mushrooms">Mushrooms</ion-option>
+            <ion-option value="onions">Onions</ion-option>
+            <ion-option value="pineapple">Pineapple</ion-option>
+            <ion-option value="olives" >Black Olives</ion-option>
+            <ion-option value="sausage">Sausage</ion-option>
+            <ion-option value="Spinach">Spinach</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item class="goods-num">
+        <ion-row no-padding>
+            <ion-col col-3 >
+                <p>选择数量</p>
+            </ion-col>
+            <ion-col col-9>
+                <div>
+                    <button ion-button outline small color="dark" icon-center clear (click)="modifyNum(false)">
+                        <ion-icon name='ios-remove-circle-outline'></ion-icon>
+                    </button>
+                    <p>{{goodsNum}}</p>
+                    <button ion-button outline small color="dark" icon-center clear (click)="modifyNum(true)">
+                        <ion-icon name='ios-add-circle'></ion-icon>
+                    </button>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-item>
+    <ion-item class="goods-num">
+        <ion-row no-padding>
+            <ion-col col-3 >
+                <p>您需支付</p>
+            </ion-col>
+            <ion-col class="money">
+                <div>
+                   ￥ <span>{{need2Pay()}}</span>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-item>
+    <ion-item class="add2cart">
+        <p>
+            <button ion-button full (click)="add2Cart()">加入购物车</button>
+        </p>
+    </ion-item>    
+    
+  </ion-list>
+</ion-content>

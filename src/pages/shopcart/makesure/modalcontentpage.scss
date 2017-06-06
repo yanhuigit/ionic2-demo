@@ -1,0 +1,50 @@
+ion-title{
+    p{
+        font-size: 14px;
+        color:#4e3838;
+    }
+}
+.goods{
+    h6{
+        color: #442626;
+    }
+    p{
+        color:#e4393c;
+    }
+    .goods-model ion-label{
+        color:#250808;
+    }
+}
+.goods-num{
+    p{
+        color:#250808;
+        font-size: 17px;
+        margin-left: -5px;
+    }
+    div{
+        float: right;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button{
+            ion-icon{
+                font-size: 20px;
+            }
+        }
+        p{
+            width: 10px;
+        }
+        .money{
+            color:#1b3e3b;
+        }
+    }
+}
+
+.add2cart{
+    p button{
+        letter-spacing: 1rem;
+        height:35px !important;
+        font-size: 1.4rem !important;
+    }
+}
