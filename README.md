@@ -1,1 +1,1 @@
-# This is an ionic2 simple demo
+# This is a simple demo bulid by ionic2.
